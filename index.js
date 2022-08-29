@@ -24,18 +24,6 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-// app.get('/api', function (req, res) {
-//   resObjUnix = new Date().getTime()
-//   resObjUtc = new Date().toUTCString()
-//   // resObj['unix'] = new Date().getTime()
-//   // resObj['utc'] = new Date().toUTCString()
-  
-//   res.json({
-//       unix: resObjUnix,
-//       utc: resObjUtc
-//     })
-// })
-
 app.get("/api", (req, res)=>{
   let date = new Date();
   let UTC = date.getTime();
@@ -54,17 +42,11 @@ app.get("/api/:date", function (req, res) {
     
   } else {
     const checkDate = new Date(req.params.date)
-
-    // console.log(checkDate)
+    
     if (checkDate == 'Invalid Date') {
-      // if (req.params.date) {
-      //   console.log('it be null')
-      // }
       console.log('it is invalid')
       res.json({ error : "Invalid Date" })
     }
-    
-    // console.log(checkDate instanceof Date && !isNaN(checkDate.valueOf()));
     
     res.json(
       {
@@ -74,13 +56,6 @@ app.get("/api/:date", function (req, res) {
     )
   }
 })
-
-// test to make sure connection works
-// app.get('/api/1451001600000', function (req, res) {
-//   res.json({ unix: 1451001600000, utc: "Fri, 25 Dec 2015 00:00:00 GMT" })
-// })
-
-
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
